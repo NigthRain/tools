@@ -1,0 +1,409 @@
+
+/* ====================================
+ * Typora 自定义主题：Screen Read Theme
+ * Author: Trae with Sonnet
+ * Version: 1.0.0 (首次发布)
+ * 主要用于非正式文档的屏幕显示及导出pdf等格式
+ * 主题特点：
+ * 1. 采用免费商用字体，首选开源字体；
+ * 2. 优化缩进、对齐和间距；
+ * 3. 优化的标题层级样式；
+ * 4. 尽量模拟MS-WORD默认显示效果；
+ * 5. 针对打印优化的样式设置。
+ * ==================================== */
+
+/* ==== 根设置与变量定义 ==== */
+:root {
+    /* ---- 颜色变量 ---- */
+    --bg-color: #F5F6FA;               /* 页面整体背景色：浅灰蓝色，护眼配色 */
+    --side-bar-bg-color: #F5F6FA;      /* 侧边栏背景色：与页面背景一致 */
+    --writing-area-bg-color: #F4F4F4;  /* 书写区背景色：略深的灰色，突出主体内容 */
+    --text-color: #432913;             /* 默认文字颜色：深褐色，与纸质阅读体验接近 */
+    --strong-text-color: #EE0000;      /* 粗体文字颜色：鲜红色，突出重点内容 */
+    --link-color: #02AAF4;             /* 超链接颜色：天蓝色，醒目但不刺眼 */
+    --link-hover-text-color: #FFFFFF;  /* 超链接悬停文字颜色：白色 */
+    --link-hover-bg-color: #02AAF4;    /* 超链接悬停背景色：与链接颜色一致 */
+    --selection-bg-color: #C6C6C6;     /* 文字选中背景色：中灰色 */
+    --code-block-bg-color: #F4FCFF;    /* 代码块背景色：淡蓝色，突出代码区域 */
+    --inline-code-bg-color: #FFFF00;   /* 行内代码背景色：黄色，醒目提示 */
+    --blockquote-bg-color: #F4FCFF;    /* 引用块背景色：淡蓝色，与代码块一致 */
+    --blockquote-border-color: #AFAAA1;/* 引用块边框色：淡灰色，柔和分隔 */
+    --table-hover-bg-color: #C6C6C6;   /* 表格悬停行背景色：中灰色 */
+
+    /* ---- 字体变量 ---- */
+    /* 默认字体：优先使用朱雀仿宋，适合正文阅读 */
+    --font-family-default: "Times New Roman", "朱雀仿宋", "朱雀仿宋(预览测试版)","ZhuqueFangsong", "仿宋", "FangSong", serif;
+
+    /* 段落字体：优先使用宋体系列，提供良好的阅读体验 */
+    --font-family-paragraph: "文津宋体", "WenJinSong", "思源宋体", "Source Han Serif SC", "Noto Serif CJK SC", serif;
+
+    /* 一级标题字体：使用文明宋体，庄重大方 */
+    --font-family-h1: "猫啃网文明宋", "MaokenWenmingSong", "钉钉进步体", "DingTalkJinbu", sans-serif;
+
+    /* 二级标题字体：使用新晰黑体，清晰醒目 */
+    --font-family-h2: "霞鹜新晰黑", "LXGW Neo XiHei", "等距更纱黑体", "Sarasa Gothic SC", sans-serif;
+
+    /* 三级标题字体：使用文楷体，优雅清新 */
+    --font-family-h3: "Times New Roman", "霞鹜文楷", "LXGW WenKai", cursive;
+
+    /* 四级标题字体：继承段落字体 */
+    --font-family-h4: var(--font-family-paragraph);
+
+    /* 五级标题字体：使用MiSans，居中对齐，用作表格标题、图片标题等 */
+    --font-family-h5: "Times New Roman", "MiSans Medium", "MiSans", "HarmonyOS Sans", sans-serif;
+
+    /* 六级标题字体：继承h5字体，左对齐，备用 */
+    --font-family-h6: var(--font-family-h5);
+
+    /* 代码字体：使用等宽字体，代码对齐美观 */
+    --font-family-code: "Sarasa Term Slab SC", monospace;
+
+    /* 表格表头字体：黑体 */
+    --font-family-table-header: "等距更纱黑体 Slab Sc", "Sarasa Gothic SC", "MiSans", "HarmonyOS Sans", sans-serif;
+
+    /* 表格内容字体：继承段落字体 */
+    --font-family-table-body: var(--font-family-paragraph);
+
+    /* 引用块字体：黑体 */
+    --font-family-blockquote: "MiSans", "HarmonyOS Sans", sans-serif;
+
+    /* Times字体：用于特殊场合 */
+    --font-family-times: "Times New Roman", Times, serif;
+
+    /* ---- 尺寸变量 ---- */
+    --sidebar-width: 320px;            /* 侧边栏宽度 */
+    --writing-area-width: 900px;       /* 书写区域最大宽度 */
+    --content-width: 792px;            /* 内容区域宽度 */
+    --image-width: 750px;              /* 图片最大宽度 */
+    --blockquote-text-width: 720px;    /* 引用块文字宽度 */
+
+    /* ---- 打印导出变量 ---- */
+    --page-margin-top: 37mm;           /* 页面上边距 */
+    --page-margin-bottom: 28mm;        /* 页面下边距 */
+    --page-margin-left: 28mm;          /* 页面左边距 */
+    --page-margin-right: 26mm;         /* 页面右边距 */
+    --version-heart-width: 156mm;      /* 版心宽度 */
+}
+
+/* ==== 基础页面设置 ==== */
+html {
+    font-size: 16px;                   /* 基础字号设置 */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family-default);
+    font-size: 20px;                   /* 正文字号 */
+    line-height: 36px;                 /* 行高：1.8倍行距 */
+    counter-reset: h2-counter h3-counter h4-counter; /* 重置标题编号计数器 */
+}
+
+/* ==== 侧边栏设置 ==== */
+#typora-sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--side-bar-bg-color);
+}
+
+/* ==== 主要书写区域设置 ==== */
+#write {
+    max-width: var(--writing-area-width);
+    background-color: var(--writing-area-bg-color);
+    margin: 0 auto;                    /* 居中显示 */
+    padding: 40px 0;                   /* 上下留白 */
+}
+
+/* 控制内容区域宽度，但排除一级和五级标题 */
+#write > *:not(h1):not(h5) {
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==== 文字选中效果 ==== */
+::selection {
+    background: var(--selection-bg-color);
+}
+
+/* ==== 超链接样式 ==== */
+a {
+    color: var(--link-color);
+    text-decoration: none;             /* 去除下划线 */
+    transition: all 0.3s ease;         /* 添加过渡动画 */
+}
+
+/* 超链接悬停效果 */
+a:hover {
+    color: var(--link-hover-text-color);
+    background-color: var(--link-hover-bg-color);
+    padding: 2px 6px;                  /* 内边距增加可点击区域 */
+    border-radius: 4px;                /* 圆角效果 */
+}
+
+/* ==== 段落样式 ==== */
+p {
+    font-family: var(--font-family-paragraph);
+    font-size: 22px;
+    line-height: 1.8;                  /* 行高为字号的1.8倍 */
+    text-indent: 2em;                  /* 首行缩进2个字符 */
+    text-align: left;                  /* 左对齐 */
+    margin: 0;                         /* 取消段落间距 */
+}
+
+/* ==== 列表样式 ==== */
+ul, ol {
+    margin: 0.25em 0;                   /* 列表整体上下间距 */
+    padding-left: 3em;                 /* 左侧缩进 */
+}
+
+li {
+    margin: 0;                         /* 取消列表项间距 */
+}
+
+li p {
+    margin: 0;                         /* 取消列表项中段落的间距 */
+    text-indent: 0;                    /* 取消列表项中段落的缩进 */
+}
+
+/* ==== 标题通用样式 ==== */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+    margin: 0.5em 0;                   /* 统一设置标题上下间距 */
+}
+
+/* 一级标题样式 */
+h1 {
+    font-family: var(--font-family-h1);
+    font-size: 28px;
+    text-transform: uppercase;         /* 英文转大写 */
+    text-align: center;                /* 居中对齐 */
+    text-indent: 0;
+    max-width: 100%;
+}
+
+/* 二级标题样式 */
+h2 {
+    font-family: var(--font-family-h2);
+    font-size: 22px;
+    text-align: left;
+    text-indent: 2em;
+    counter-reset: h3-counter h4-counter; /* 重置三级和四级标题计数器 */
+}
+/* 二级标题自动编号 */
+h2:before {
+    content: counter(h2-counter, cjk-ideographic) "、"; /* 使用中文数字编号 */
+    counter-increment: h2-counter;
+    margin-right: 0.25em;
+    margin-left: -2em;
+}
+
+/* 三级标题样式 */
+h3 {
+    font-family: var(--font-family-h3);
+    font-size: 22px;
+    text-align: left;
+    text-indent: 2em;
+    counter-reset: h4-counter;         /* 重置四级标题计数器 */
+}
+/* 三级标题自动编号 */
+h3:before {
+    content: "（" counter(h3-counter, cjk-ideographic) "）"; /* 使用带括号的中文数字 */
+    counter-increment: h3-counter;
+    margin-right: 0.25em;
+    margin-left: -2em;
+}
+
+/* 四级标题样式 */
+h4 {
+    font-family: var(--font-family-h4);
+    font-weight: bold;
+    font-size: 22px;
+    text-align: left;
+    text-indent: 2em;
+}
+/* 四级标题自动编号 */
+h4:before {
+    content: counter(h4-counter) ". "; /* 使用阿拉伯数字编号 */
+    counter-increment: h4-counter;
+    margin-right: 0.25em;
+    margin-left: -2em;
+}
+
+/* 五级标题样式 */
+h5 {
+    font-family: var(--font-family-h5);
+    font-size: 22px;
+    text-align: center;                /* 居中对齐 */
+    text-indent: 0;
+    max-width: 100%;
+}
+
+/* 六级标题样式 */
+h6 {
+    font-family: var(--font-family-h6);
+    font-size: 22px;
+    text-align: left;
+    text-indent: 0;
+}
+
+/* ==== 图片样式 ==== */
+img {
+    display: block;                    /* 块级显示 */
+    margin: 2rem auto;                 /* 上下间距2rem，左右居中 */
+    width: var(--image-width) !important; /* 限制图片宽度 */
+    max-width: 100%;                   /* 响应式宽度 */
+}
+
+/* ==== 强调文本样式 ==== */
+strong {
+    font-weight: bold;
+    color: var(--strong-text-color);   /* 使用红色突出显示 */
+}
+
+/* ==== 行内代码样式 ==== */
+:not(pre) > code {
+    font-family: var(--font-family-paragraph);
+    font-size: 22px;
+    background-color: var(--inline-code-bg-color);
+    padding: 2px 4px;                  /* 内边距 */
+    border-radius: 3px;                /* 圆角效果 */
+    color: var(--text-color);
+}
+
+/* ==== 代码块样式 ==== */
+pre, .md-fences {
+    font-family: var(--font-family-code);
+    font-size: 20px;
+    line-height: 1.75rem;              /* 代码行高 */
+    background-color: var(--code-block-bg-color);
+    padding: 1rem;                     /* 内边距 */
+    border-radius: 8px;                /* 圆角效果 */
+    margin: 0.5em 0;                   /* 上下间距 */
+}
+
+/* ==== 引用块样式 ==== */
+blockquote {
+    font-family: var(--font-family-blockquote);
+    font-size: 20px;
+    line-height: 1.8;                  /* 行高 */
+    background-color: var(--blockquote-bg-color);
+    border-left: 4px solid var(--blockquote-border-color);
+    padding: 1em;                      /* 内边距 */
+    border-radius: 4px;                /* 圆角效果 */
+    margin: 0.5em auto;                /* 上下间距，左右居中 */
+    max-width: var(--blockquote-text-width);
+}
+
+/* 引用块中的段落样式 */
+blockquote p {
+    margin: 0;                         /* 取消段落间距 */
+    text-indent: 0;                    /* 取消缩进 */
+    text-align: left;                  /* 左对齐 */
+    line-height: 1.4;                  /* 减小行高 */
+}
+
+/* ==== 表格样式 ==== */
+table {
+    margin: 0.5em 0;                   /* 上下间距 */
+    border-collapse: collapse;         /* 合并边框 */
+    width: 100%;                       /* 宽度100% */
+}
+
+/* 表格标题样式 */
+table caption {
+    font-family: var(--font-family-h5);
+    font-size: 22px;
+    text-align: center;                /* 居中对齐 */
+    margin-bottom: 0.5em;              /* 下间距 */
+}
+
+/* 表头样式 */
+table th {
+    font-family: var(--font-family-table-header);
+    font-weight: bold;
+    background-color: #F4F4F4;         /* 浅灰色背景 */
+    padding: 0.3em 0.5em;              /* 内边距 */
+    border: 1px solid #000000;         /* 边框 */
+    line-height: 1.4;                  /* 行高 */
+}
+
+/* 单元格样式 */
+table td {
+    font-family: var(--font-family-table-body);
+    padding: 0.3em 0.5em;              /* 内边距 */
+    border: 1px solid #000000;         /* 边框 */
+    line-height: 1.4;                  /* 行高 */
+}
+
+/* 表格中的段落样式 */
+table p {
+    margin: 0;                         /* 取消段落间距 */
+    text-indent: 0;                    /* 取消缩进 */
+    line-height: 1.4;                  /* 减小行高 */
+}
+
+/* 表格悬停效果 */
+tr:hover {
+    background-color: var(--table-hover-bg-color);
+}
+
+/* ==== 打印样式 ==== */
+@media print {
+    /* 打印时的背景和文字颜色 */
+    body {
+        background-color: #FFFFFF !important;
+        color: #000000;
+    }
+    
+    /* 清除打印时的背景色 */
+    #write {
+        background-color: transparent !important;
+    }
+
+    /* 打印时的超链接颜色 */
+    a {
+        color: #02AAF4 !important;
+        background-color: transparent !important;
+    }
+
+    /* 打印时的加粗文字颜色 */
+    strong {
+        color: #EE0000 !important;
+    }
+
+    /* 打印时的行内代码背景色 */
+    :not(pre) > code {
+        background-color: #FFFF00 !important;
+    }
+
+    /* 打印时的代码块背景色 */
+    pre, .md-fences {
+        background-color: #F4FCFF !important;
+    }
+
+    /* 打印时的引用块背景色 */
+    blockquote {
+        background-color: #F4FCFF !important;
+    }
+
+    /* 打印时的字号设置 */
+    h1 { font-size: 16pt; }           /* 一级标题：16pt */
+    h2, h3, h4, h6, p { font-size: 14pt; } /* 二到四级标题、六级标题和正文：14pt */
+    h5, table, blockquote { font-size: 12pt; } /* 五级标题、表格和引用：12pt */
+    pre, .md-fences { font-size: 11pt; } /* 代码块：11pt */
+}
+
+/* ==== 大纲面板样式 ==== */
+/* 隐藏一级、五级和六级标题 */
+.outline-h1,
+.outline-h5,
+.outline-h6 {
+    display: none !important;
+}
+
+/* 显示二级到四级标题 */
+.outline-h2,
+.outline-h3,
+.outline-h4 {
+    display: block;
+}
