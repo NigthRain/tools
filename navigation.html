@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<!--
+	Navigation Site based on Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>导航网站</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="18/assets/css/main.css" />
+		<style>
+			/* 自定义样式 */
+			.content-section {
+				display: none;
+			}
+			.content-section.active {
+				display: block;
+			}
+			.link-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1.5em;
+				margin: 2em 0;
+			}
+			.link-card {
+				background: #f9f9f9;
+				border: 1px solid #e4e4e4;
+				border-radius: 5px;
+				padding: 1.5em;
+				transition: all 0.3s ease;
+			}
+			.link-card:hover {
+				background: #f4f4f4;
+				border-color: #4acaa8;
+				transform: translateY(-2px);
+				box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+			}
+			.link-card h4 {
+				margin: 0 0 0.5em 0;
+				color: #4acaa8;
+			}
+			.link-card p {
+				margin: 0 0 1em 0;
+				font-size: 0.9em;
+				color: #666;
+			}
+			.link-card a {
+				color: #4acaa8;
+				text-decoration: none;
+				border-bottom: 1px solid transparent;
+			}
+			.link-card a:hover {
+				border-bottom-color: #4acaa8;
+			}
+			.text-content {
+				line-height: 1.8;
+			}
+			.text-content h3 {
+				color: #4acaa8;
+				margin: 1.5em 0 0.8em 0;
+			}
+			.text-content h4 {
+				color: #777;
+				margin: 1.2em 0 0.6em 0;
+			}
+			.text-content ul, .text-content ol {
+				margin: 1em 0;
+			}
+			.text-content blockquote {
+				background: #f9f9f9;
+				border-left: 4px solid #4acaa8;
+				padding: 1em 1.5em;
+				margin: 1.5em 0;
+				font-style: italic;
+			}
+			.text-content code {
+				background: #f4f4f4;
+				padding: 0.2em 0.4em;
+				border-radius: 3px;
+				font-family: 'Source Code Pro', monospace;
+				font-size: 0.9em;
+			}
+			.text-content pre {
+				background: #f4f4f4;
+				padding: 1em;
+				border-radius: 5px;
+				overflow-x: auto;
+				margin: 1.5em 0;
+			}
+			.text-content pre code {
+				background: none;
+				padding: 0;
+			}
+			.loading {
+				text-align: center;
+				padding: 2em;
+				color: #888;
+			}
+			@media screen and (max-width: 736px) {
+				.link-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<span class="image avatar"><img src="18/images/avatar.jpg" alt="" /></span>
+					<h1 id="logo"><a href="#">导航网站</a></h1>
+					<p>基于Markdown的<br />简洁导航站点</p>
+				</header>
+				<nav id="nav">
+					<ul id="navigation-menu">
+						<li><a href="#loading" class="active">加载中...</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Loading Section -->
+						<section id="loading" class="content-section active">
+							<div class="container">
+								<div class="loading">
+									<h2>正在加载内容...</h2>
+									<p>请稍候， 正在解析Markdown文件</p>
+								</div>
+							</div>
+						</section>
+
+						<!-- Dynamic Content Sections will be inserted here -->
+
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; 导航网站. All rights reserved.</li>
+								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="18/assets/js/jquery.min.js"></script>
+			<script src="18/assets/js/jquery.scrollex.min.js"></script>
+			<script src="18/assets/js/jquery.scrolly.min.js"></script>
+			<script src="18/assets/js/browser.min.js"></script>
+			<script src="18/assets/js/breakpoints.min.js"></script>
+			<script src="18/assets/js/util.js"></script>
+			<script src="18/assets/js/main.js"></script>
+			<script src="markdown-parser.js"></script>
+
+	</body>
+</html>
