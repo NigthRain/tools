@@ -5,9 +5,6 @@
 #### [139邮箱-AI工作台](https://appmail.mail.10086.cn/m7/index.html)
 
 > 中国移动139邮箱内置AI工作台，可使用deepseek和qwen大语言模型对话，可自建知识库（支持Word / Excel / PPT / TXT / PDF格式），最多创建100个知识库，适用于日常办公。
->
-
-
 
 #### [Google AI Studio](https://aistudio.google.com/prompts/new_chat)
 
