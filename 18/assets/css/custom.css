@@ -1,0 +1,145 @@
+/* 自定义样式 - 基于橙红色猫咪头像配色方案 */
+
+/* 内容区域样式 */
+.content-section {
+	display: none;
+}
+.content-section.active {
+	display: block;
+}
+
+/* 链接网格布局 */
+.link-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1.5em;
+	margin: 2em 0;
+}
+
+/* 链接卡片样式 */
+.link-card {
+	background: #f9f9f9;
+	border: 1px solid #e4e4e4;
+	border-radius: 5px;
+	padding: 1.5em;
+	transition: all 0.3s ease;
+}
+.link-card:hover {
+	background: #fff5f2;
+	border-color: #FF6B47;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(255,107,71,0.2);
+}
+.link-card h4 {
+	margin: 0 0 0.5em 0;
+	color: #FF6B47;
+}
+.link-card p {
+	margin: 0 0 1em 0;
+	font-size: 0.9em;
+	color: #666;
+}
+.link-card a {
+	color: #FF6B47;
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+}
+.link-card a:hover {
+	border-bottom-color: #FF6B47;
+}
+
+/* 文本内容样式 */
+.text-content {
+	line-height: 1.8;
+}
+.text-content h3 {
+	color: #FF6B47;
+	margin: 1.5em 0 0.8em 0;
+}
+.text-content h4 {
+	color: #777;
+	margin: 1.2em 0 0.6em 0;
+}
+.text-content ul, .text-content ol {
+	margin: 1em 0;
+}
+.text-content blockquote {
+	background: #fff5f2;
+	border-left: 4px solid #FF6B47;
+	padding: 1em 1.5em;
+	margin: 1.5em 0;
+	font-style: italic;
+}
+.text-content code {
+	background: #f4f4f4;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-family: 'Source Code Pro', monospace;
+	font-size: 0.9em;
+}
+.text-content pre {
+	background: #f4f4f4;
+	padding: 1em;
+	border-radius: 5px;
+	overflow-x: auto;
+	margin: 1.5em 0;
+}
+.text-content pre code {
+	background: none;
+	padding: 0;
+}
+
+/* 加载状态样式 */
+.loading {
+	text-align: center;
+	padding: 2em;
+	color: #888;
+}
+
+/* 修复双滚动条问题 */
+body {
+	overflow-x: hidden;
+}
+#wrapper {
+	height: 100vh;
+	overflow-y: auto;
+}
+#main {
+	max-height: calc(100vh - 4em);
+}
+
+/* 表格样式 */
+.text-content table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1.5em 0;
+	border: 1px solid #e4e4e4;
+}
+.text-content table th,
+.text-content table td {
+	padding: 0.8em 1em;
+	border: 1px solid #e4e4e4;
+	text-align: left;
+}
+.text-content table th {
+	background: #fff5f2;
+	font-weight: bold;
+	color: #FF6B47;
+}
+.text-content table tr:nth-child(even) {
+	background: #fafafa;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 736px) {
+	.link-grid {
+		grid-template-columns: 1fr;
+	}
+	.text-content table {
+		font-size: 0.9em;
+	}
+	.text-content table th,
+	.text-content table td {
+		padding: 0.6em 0.8em;
+	}
+}
