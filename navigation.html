@@ -98,9 +98,48 @@
 				padding: 2em;
 				color: #888;
 			}
+			/* 修复双滚动条问题 */
+			body {
+				overflow-x: hidden;
+			}
+			#wrapper {
+				height: 100vh;
+				overflow-y: auto;
+			}
+			#main {
+				max-height: calc(100vh - 4em);
+			}
+			/* 表格样式 */
+			.text-content table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 1.5em 0;
+				border: 1px solid #e4e4e4;
+			}
+			.text-content table th,
+			.text-content table td {
+				padding: 0.8em 1em;
+				border: 1px solid #e4e4e4;
+				text-align: left;
+			}
+			.text-content table th {
+				background: #f9f9f9;
+				font-weight: bold;
+				color: #4acaa8;
+			}
+			.text-content table tr:nth-child(even) {
+				background: #fafafa;
+			}
 			@media screen and (max-width: 736px) {
 				.link-grid {
 					grid-template-columns: 1fr;
+				}
+				.text-content table {
+					font-size: 0.9em;
+				}
+				.text-content table th,
+				.text-content table td {
+					padding: 0.6em 0.8em;
 				}
 			}
 		</style>

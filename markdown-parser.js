@@ -8,7 +8,7 @@
 
     // 配置
     const CONFIG = {
-        markdownFile: 'content.md', // 默认markdown文件名
+        markdownFile: 'contents.md', // 默认markdown文件名
         defaultSection: 'home' // 默认显示的section
     };
 
@@ -92,6 +92,9 @@
             // 解析H4标题
             html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
 
+            // 解析表格
+            html = this.parseTable(html);
+
             // 解析粗体
             html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
@@ -135,6 +138,86 @@
                 .replace(/-+/g, '-')
                 .replace(/^-|-$/g, '')
                 .substring(0, 20);
+        }
+
+        /**
+         * 解析表格
+         * @param {string} html - HTML内容
+         * @returns {string} 解析后的HTML
+         */
+        parseTable(html) {
+            // 匹配表格行
+            const tableRegex = /(\|[^\n]+\|\n)+/g;
+            
+            return html.replace(tableRegex, (match) => {
+                const rows = match.trim().split('\n');
+                if (rows.length < 2) return match;
+                
+                let tableHtml = '<table>';
+                
+                // 处理表头
+                const headerCells = rows[0].split('|').filter(cell => cell.trim());
+                if (headerCells.length > 0) {
+                    tableHtml += '<thead><tr>';
+                    headerCells.forEach(cell => {
+                        tableHtml += `<th>${cell.trim()}</th>`;
+                    });
+                    tableHtml += '</tr></thead>';
+                }
+                
+                // 跳过分隔行，处理数据行
+                if (rows.length > 2) {
+                    tableHtml += '<tbody>';
+                    for (let i = 2; i < rows.length; i++) {
+                        const cells = rows[i].split('|').filter(cell => cell.trim());
+                        if (cells.length > 0) {
+                            tableHtml += '<tr>';
+                            cells.forEach(cell => {
+                                tableHtml += `<td>${cell.trim()}</td>`;
+                            });
+                            tableHtml += '</tr>';
+                        }
+                    }
+                    tableHtml += '</tbody>';
+                }
+                
+                tableHtml += '</table>';
+                return tableHtml;
+            });
+        }
+
+        /**
+         * 转义HTML字符
+         * @param {string} text - 需要转义的文本
+         * @returns {string} 转义后的文本
+         */
+        escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        /**
+         * 解析行内Markdown
+         * @param {string} text - 文本内容
+         * @returns {string} 解析后的HTML
+         */
+        parseInlineMarkdown(text) {
+            let html = text;
+            
+            // 解析链接
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+            
+            // 解析粗体
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            
+            // 解析斜体
+            html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+            
+            // 解析行内代码
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            
+            return html;
         }
     }
 
@@ -342,7 +425,7 @@
             $loading.html(`
                 <h2>加载失败</h2>
                 <p>${message}</p>
-                <p>请检查是否存在 <code>content.md</code> 文件</p>
+                <p>请检查是否存在 <code>contents.md</code> 文件</p>
             `);
         }
     }
