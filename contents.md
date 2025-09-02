@@ -38,7 +38,8 @@
 #### [其他大语言模型](https://ai-bot.cn/favorites/ai-chatbots/)
 
 > chatgpt gork claude [Mistral](https://chat.mistral.ai/chat) [Microsoft](https://copilot.cloud.microsoft/) [Copilot](https://m365.cloud.microsoft/search/?auth=2)  
- 国内主要有[DeepSeek](https://chat.deepseek.com/) [豆包](https://www.doubao.com/chat/)  [通义](https://www.tongyi.com/)/[千问](https://chat.qwen.ai/) ，以及大量基于以上3个模型的  [超算中心](https://www.scnet.cn/ui/chatbot/)  [纳米](https://bot.n.cn/)  [小艺](https://xiaoyi.huawei.com/chat/) [当贝](https://ai.dangbei.com/chat)   [QQ文档](https://docs.qq.com/ai)  [QQ浏览器](https://aisearch.qq.com/) …… 
+>
+>  国内主要有[DeepSeek](https://chat.deepseek.com/) [豆包](https://www.doubao.com/chat/)  [通义](https://www.tongyi.com/)/[千问](https://chat.qwen.ai/) ，以及大量基于以上3个模型的  [超算中心](https://www.scnet.cn/ui/chatbot/)  [纳米](https://bot.n.cn/)  [小艺](https://xiaoyi.huawei.com/chat/) [当贝](https://ai.dangbei.com/chat)   [QQ文档](https://docs.qq.com/ai)  [QQ浏览器](https://aisearch.qq.com/) …… 
 
 ### network
 
