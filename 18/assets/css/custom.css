@@ -58,8 +58,16 @@
 .link-card:hover {
 	background: #fff5f2;                              /* 悬停时变为淡橙色背景 */
 	border-color: #FF6B47;                            /* 边框变为主题色 */
-	transform: translateY(-2px);                       /* 向上轻微移动 */
-	box-shadow: 0 4px 12px rgba(255,107,71,0.2);     /* 橙红色阴影增强悬停反馈 */
+	transform: translateY(-3px);                       /* 向上移动增强效果 */
+	box-shadow: 0 6px 20px rgba(255,107,71,0.25);    /* 更强的橙红色阴影 */
+	cursor: pointer;                                  /* 指针光标提示可点击 */
+}
+
+/* 卡片点击效果 - 提供即时反馈 */
+.link-card:active {
+	transform: translateY(-1px);                       /* 点击时轻微下压 */
+	box-shadow: 0 2px 8px rgba(255,107,71,0.3);      /* 减弱阴影模拟按下 */
+	transition: all 0.1s ease;                        /* 快速过渡 */
 }
 
 /* 卡片标题样式 */
@@ -147,14 +155,62 @@
 }
 
 /* ========================================
- * 加载状态样式
+ * 加载状态样式 - 提供用户反馈
  * ======================================== */
 
 /* 加载提示容器 - 在Markdown解析期间显示 */
 .loading {
 	text-align: center;                               /* 居中对齐 */
-	padding: 2em;                                     /* 充足的内边距 */
-	color: #888;                                      /* 中等灰色文字 */
+	padding: 3rem 2rem;                              /* 增加内边距提升视觉效果 */
+	color: #FF6B47;                                   /* 使用主题色 */
+	font-size: 1.1rem;                               /* 稍大的字体 */
+	position: relative;                              /* 为动画定位 */
+}
+
+/* 加载动画效果 - 旋转指示器 */
+.loading::after {
+	content: '';                                     /* 空内容用于动画 */
+	display: inline-block;                           /* 行内块元素 */
+	width: 20px;                                     /* 动画圆圈宽度 */
+	height: 20px;                                    /* 动画圆圈高度 */
+	margin-left: 10px;                               /* 与文字的间距 */
+	border: 2px solid #FF6B47;                       /* 主题色边框 */
+	border-radius: 50%;                              /* 圆形 */
+	border-top-color: transparent;                   /* 顶部透明创建旋转效果 */
+	animation: spin 1s linear infinite;              /* 旋转动画 */
+	vertical-align: middle;                          /* 垂直居中对齐 */
+}
+
+/* 旋转动画关键帧 */
+@keyframes spin {
+	to {
+		transform: rotate(360deg);                   /* 360度旋转 */
+	}
+}
+
+/* 错误状态样式 - 友好的错误提示 */
+.error-message {
+	text-align: center;                               /* 居中对齐 */
+	padding: 2rem;                                   /* 充足的内边距 */
+	color: #d63031;                                  /* 错误红色 */
+	background-color: #ffeaa7;                       /* 温和的黄色背景 */
+	border: 1px solid #fdcb6e;                       /* 橙色边框 */
+	border-radius: 8px;                              /* 圆角设计 */
+	margin: 1rem 0;                                  /* 上下边距 */
+	font-size: 1rem;                                 /* 标准字体大小 */
+}
+
+/* 错误标题样式 */
+.error-message h3 {
+	color: #d63031;                                  /* 错误红色标题 */
+	margin-bottom: 0.5rem;                           /* 底部边距 */
+	font-size: 1.2rem;                               /* 稍大的标题字体 */
+}
+
+/* 错误描述样式 */
+.error-message p {
+	margin: 0.5rem 0;                                /* 段落边距 */
+	line-height: 1.5;                                /* 行高提高可读性 */
 }
 
 /* ========================================
@@ -210,24 +266,88 @@ body {
 }
 
 /* ========================================
- * 响应式设计 - 移动端适配
+ * 响应式设计 - 适配不同屏幕尺寸
  * ======================================== */
 
-/* 小屏幕设备样式调整 (手机端) */
+/* 大屏幕优化 (桌面显示器 1200px+) */
+@media screen and (min-width: 1200px) {
+	.link-grid {
+		grid-template-columns: repeat(4, 1fr);           /* 大屏显示4列 */
+		gap: 1.8rem;                                    /* 增大间距 */
+	}
+	
+	.link-card {
+		padding: 1.8rem;                                /* 增加内边距 */
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 更流畅的过渡 */
+	}
+	
+	.link-card:hover {
+		transform: translateY(-5px) scale(1.02);         /* 悬停上浮和轻微放大 */
+		box-shadow: 0 12px 30px rgba(255, 107, 71, 0.25); /* 更强的阴影效果 */
+	}
+}
+
+/* 中等屏幕优化 (平板设备 737px-1024px) */
+@media screen and (max-width: 1024px) and (min-width: 737px) {
+	.link-grid {
+		grid-template-columns: repeat(2, 1fr);           /* 平板显示2列 */
+		gap: 1.2rem;                                    /* 适中间距 */
+	}
+	
+	.link-card {
+		padding: 1.4rem;                                /* 适中内边距 */
+	}
+}
+
+/* 小屏幕设备样式调整 (手机端 ≤736px) */
 @media screen and (max-width: 736px) {
 	/* 链接网格在小屏幕上改为单列布局 */
 	.link-grid {
 		grid-template-columns: 1fr;                     /* 单列布局节省空间 */
+		gap: 1rem;                                      /* 紧凑间距 */
+		margin: 1.5rem 0;                               /* 减少外边距 */
+	}
+	
+	.link-card {
+		padding: 1.2rem;                                /* 适合手机的内边距 */
+		margin-bottom: 0.5rem;                          /* 底部边距 */
+	}
+	
+	.link-card h4 {
+		font-size: 1.1rem;                              /* 手机端标题稍小 */
+		line-height: 1.3;                               /* 紧凑行高 */
+	}
+	
+	.link-card p {
+		font-size: 0.9rem;                              /* 手机端描述文字稍小 */
+		line-height: 1.4;                               /* 适中行高 */
 	}
 	
 	/* 表格在小屏幕上的优化 */
 	.text-content table {
-		font-size: 0.9em;                               /* 减小字体适应小屏幕 */
+		font-size: 0.85rem;                             /* 进一步减小字体 */
+		overflow-x: auto;                               /* 水平滚动 */
+		display: block;                                 /* 块级显示支持滚动 */
+		white-space: nowrap;                            /* 防止文字换行 */
 	}
 	
 	/* 表格单元格紧凑布局 */
 	.text-content table th,
 	.text-content table td {
-		padding: 0.6em 0.8em;                           /* 减少内边距节省空间 */
+		padding: 0.5rem 0.7rem;                         /* 更紧凑的内边距 */
+		min-width: 100px;                               /* 最小宽度确保可读性 */
+	}
+	
+	/* 加载状态在小屏幕上的调整 */
+	.loading {
+		padding: 2rem 1rem;                             /* 减少内边距 */
+		font-size: 1rem;                                /* 标准字体大小 */
+	}
+	
+	/* 错误信息在小屏幕上的调整 */
+	.error-message {
+		padding: 1.5rem;                                /* 减少内边距 */
+		margin: 0.5rem 0;                               /* 减少外边距 */
+		font-size: 0.9rem;                              /* 稍小字体 */
 	}
 }

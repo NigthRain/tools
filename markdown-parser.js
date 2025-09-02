@@ -588,10 +588,15 @@
          */
         showError(message) {
             const $loading = $('#loading .loading');
+            $loading.removeClass('loading').addClass('error-message');
             $loading.html(`
-                <h2>加载失败</h2>
-                <p>${message}</p>
-                <p>请检查是否存在 <code>contents.md</code> 文件</p>
+                <h3>🚫 加载失败</h3>
+                <p><strong>错误详情：</strong>${message}</p>
+                <p>💡 <strong>解决建议：</strong></p>
+                <p>• 检查网络连接是否正常</p>
+                <p>• 确认 <code>content.md</code> 或 <code>contents.md</code> 文件是否存在</p>
+                <p>• 尝试刷新页面重新加载</p>
+                <p>• 如问题持续存在，请联系管理员</p>
             `);
         }
     }
