@@ -31,7 +31,7 @@
 
 > 长文本问答，200万字上下文
 
-[学而思九章](https://playground.xes1v1.cn/MathGPT)
+#### [学而思九章](https://playground.xes1v1.cn/MathGPT)
 
 > 教辅、学科知识
 
@@ -43,15 +43,15 @@
 
 #### git
 
-> [github](https://github.com/)  [gitee](https://gitee.com/3g/projects)
+> [github](https://github.com/) 	[gitee](https://gitee.com/3g/projects)
 
 #### pages
 
-> [cloudflare](https://dash.cloudflare.com/)  [netlify](https://app.netlify.com/)  [vercel](https://vercel.com/) [edgeone](https://console.tencentcloud.com/edgeone/pages)
+> [cloudflare](https://dash.cloudflare.com/)	 [netlify](https://app.netlify.com/) 	 [vercel](https://vercel.com/) 	[edgeone](https://console.tencentcloud.com/edgeone/pages)
 
 #### vps
 
-> [腾讯云 ](https://cloud.tencent.com/) [阿里云](https://cn.aliyun.com/) [京东云](https://console.jdcloud.com/) [火山云](https://www.volcengine.com/)
+> [腾讯云 ](https://cloud.tencent.com/) 	[阿里云](https://cn.aliyun.com/) 	[京东云](https://console.jdcloud.com/) 	[火山云](https://www.volcengine.com/)
 
 
 
