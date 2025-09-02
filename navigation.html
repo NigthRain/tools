@@ -1,66 +1,94 @@
 <!DOCTYPE HTML>
 <!--
-	Navigation Site based on Read Only by HTML5 UP
+	导航网站 - 基于Markdown的动态导航系统
+	基于 Read Only by HTML5 UP 模板
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	
+	项目特性：
+	- 自动解析contents.md文件生成导航菜单和内容
+	- 橙红色主题设计，灵感来源于猫咪头像配色
+	- 响应式布局，支持桌面端和移动端访问
+	- 支持多种Markdown语法：标题、链接、表格、代码块等
+	- 动态内容渲染，无需手动维护HTML结构
 -->
 <html>
 	<head>
+		<!-- 页面标题 -->
 		<title>常用网址导航</title>
+		<!-- 字符编码设置 -->
 		<meta charset="utf-8" />
+		<!-- 响应式视口设置，禁用用户缩放以保持设计一致性 -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!-- 网站图标 - SVG格式的橙色猫咪主题图标 -->
 		<link rel="icon" type="image/svg+xml" href="favicon.png" />
+		<!-- 基础样式文件 - HTML5 UP Read Only模板的核心样式 -->
 		<link rel="stylesheet" href="18/assets/css/main.css" />
+		<!-- 自定义样式文件 - 橙红色主题样式，覆盖默认绿色主题 -->
 		<link rel="stylesheet" href="18/assets/css/custom.css" />
 
 	</head>
+	<!-- is-preload类用于页面加载时的预加载动画效果 -->
 	<body class="is-preload">
 
-		<!-- Header -->
+		<!-- 页面头部区域 - 包含头像、标题和导航菜单 -->
 			<section id="header">
 				<header>
-					<span class="image avatar"><img src="18/images/avatar.jpg" alt="" /></span>
+					<!-- 头像区域 - 橙色猫咪图片，作为网站主题色彩的灵感来源 -->
+					<span class="image avatar"><img src="18/images/avatar.jpg" alt="橙色猫咪头像" /></span>
+					<!-- 网站主标题 -->
 					<h1 id="logo"><a href="#">常用网站</a></h1>
+					<!-- 网站副标题描述 -->
 					<p>快速导航</p>
 				</header>
+				<!-- 导航菜单 - 将由JavaScript根据contents.md内容动态生成 -->
 				<nav id="nav">
 					<ul id="navigation-menu">
+						<!-- 初始加载状态，显示"加载中..."直到Markdown解析完成 -->
 						<li><a href="#loading" class="active">加载中...</a></li>
 					</ul>
 				</nav>
 
 			</section>
 
-		<!-- Wrapper -->
+		<!-- 主要内容包装器 - 包含所有页面内容 -->
 			<div id="wrapper">
 
-				<!-- Main -->
+				<!-- 主内容区域 - 显示解析后的Markdown内容 -->
 					<div id="main">
 
-						<!-- Loading Section -->
+						<!-- 加载状态页面 - 在Markdown文件解析期间显示 -->
 						<section id="loading" class="content-section active">
 							<div class="container">
 								<div class="loading">
-									<h2>正在加载内容...</h2>
-									<p>请稍候， 正在解析</p>
+									<h2>正在加载内容……</h2>
+									<p>请稍候……正在解析</p>
 								</div>
 							</div>
 						</section>
 
-						<!-- Dynamic Content Sections will be inserted here -->
+						<!-- 动态内容区域 - Markdown解析后的各个section将插入到这里 -->
 
 					</div>
 
 			</div>
 
-		<!-- Scripts -->
+		<!-- JavaScript脚本文件加载区域 -->
+			<!-- jQuery核心库 - 提供DOM操作、事件处理、AJAX等功能 -->
 			<script src="18/assets/js/jquery.min.js"></script>
+			<!-- jQuery滚动扩展插件 - 提供高级滚动效果和检测 -->
 			<script src="18/assets/js/jquery.scrollex.min.js"></script>
+			<!-- jQuery平滑滚动插件 - 实现导航点击的平滑滚动效果 -->
 			<script src="18/assets/js/jquery.scrolly.min.js"></script>
+			<!-- 浏览器检测工具 - 识别用户浏览器类型和版本 -->
 			<script src="18/assets/js/browser.min.js"></script>
+			<!-- 响应式断点管理 - 处理不同屏幕尺寸的布局切换 -->
 			<script src="18/assets/js/breakpoints.min.js"></script>
+			<!-- 工具函数库 - 提供常用的辅助函数 -->
 			<script src="18/assets/js/util.js"></script>
+			<!-- HTML5 UP模板主脚本 - 处理模板的核心交互逻辑 -->
 			<script src="18/assets/js/main.js"></script>
+			<!-- 自定义Markdown解析器 - 核心功能：解析contents.md并生成导航和内容 -->
 			<script src="18/assets/js/markdown-parser.js"></script>
 
 	</body>

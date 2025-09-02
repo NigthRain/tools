@@ -425,7 +425,7 @@
             $loading.html(`
                 <h2>加载失败</h2>
                 <p>${message}</p>
-                <p>请检查是否存在 <code>contents.md</code> 文件</p>
+                <p>请检查是否存在 <code>markdown</code> 文件</p>
             `);
         }
     }

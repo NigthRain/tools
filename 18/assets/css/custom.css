@@ -1,145 +1,233 @@
-/* 自定义样式 - 基于橙红色猫咪头像配色方案 */
+/* ========================================
+ * 导航网站自定义样式
+ * 基于橙红色猫咪头像配色方案的主题设计
+ * ========================================
+ * 
+ * 主题色彩说明：
+ * - 主色调: #FF6B47 (橙红色) - 来源于猫咪头像的主要颜色
+ * - 辅助色: #fff5f2 (淡橙色) - 用于背景和悬停效果
+ * - 中性色: #f9f9f9 (浅灰色) - 卡片背景色
+ * - 边框色: #e4e4e4 (灰色) - 用于边框和分隔线
+ * - 文字色: #666, #777, #888 (不同深度的灰色) - 确保良好的可读性
+ * 
+ * 设计理念：
+ * - 现代卡片式布局设计
+ * - 响应式网格系统
+ * - 平滑的交互动画
+ * - 清晰的视觉层次
+ * ======================================== */
 
-/* 内容区域样式 */
+/* ========================================
+ * 内容区域基础样式
+ * ======================================== */
+
+/* 内容section的显示控制 - 实现单页应用的section切换 */
 .content-section {
-	display: none;
+	display: none;           /* 默认隐藏所有section */
 }
 .content-section.active {
-	display: block;
+	display: block;         /* 显示当前激活的section */
 }
 
-/* 链接网格布局 */
+/* ========================================
+ * 链接网格布局系统
+ * ======================================== */
+
+/* 响应式网格容器 - 自动适应不同屏幕尺寸 */
 .link-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 1.5em;
-	margin: 2em 0;
+	display: grid;                                      /* 使用CSS Grid布局 */
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自适应列数，最小宽度300px */
+	gap: 1.5em;                                        /* 网格项之间的间距 */
+	margin: 2em 0;                                     /* 上下外边距 */
 }
 
-/* 链接卡片样式 */
+/* ========================================
+ * 链接卡片样式设计
+ * ======================================== */
+
+/* 基础卡片样式 - 现代卡片设计 */
 .link-card {
-	background: #f9f9f9;
-	border: 1px solid #e4e4e4;
-	border-radius: 5px;
-	padding: 1.5em;
-	transition: all 0.3s ease;
+	background: #f9f9f9;                               /* 浅灰色背景 */
+	border: 1px solid #e4e4e4;                        /* 浅灰色边框 */
+	border-radius: 5px;                               /* 圆角设计 */
+	padding: 1.5em;                                   /* 内边距确保内容舒适间距 */
+	transition: all 0.3s ease;                        /* 平滑过渡动画 */
 }
+
+/* 卡片悬停效果 - 提供视觉反馈 */
 .link-card:hover {
-	background: #fff5f2;
-	border-color: #FF6B47;
-	transform: translateY(-2px);
-	box-shadow: 0 4px 12px rgba(255,107,71,0.2);
+	background: #fff5f2;                              /* 悬停时变为淡橙色背景 */
+	border-color: #FF6B47;                            /* 边框变为主题色 */
+	transform: translateY(-2px);                       /* 向上轻微移动 */
+	box-shadow: 0 4px 12px rgba(255,107,71,0.2);     /* 橙红色阴影增强悬停反馈 */
 }
+
+/* 卡片标题样式 */
 .link-card h4 {
-	margin: 0 0 0.5em 0;
-	color: #FF6B47;
+	margin: 0 0 0.5em 0;                              /* 标题边距 */
+	color: #FF6B47;                                    /* 主题色标题 */
 }
+
+/* 卡片描述文字样式 */
 .link-card p {
-	margin: 0 0 1em 0;
-	font-size: 0.9em;
-	color: #666;
+	margin: 0 0 1em 0;                                /* 段落边距 */
+	font-size: 0.9em;                                 /* 稍小的字体 */
+	color: #666;                                      /* 深灰色文字 */
 }
+
+/* 卡片内链接样式 */
 .link-card a {
-	color: #FF6B47;
-	text-decoration: none;
-	border-bottom: 1px solid transparent;
+	color: #FF6B47;                                    /* 链接使用主题色 */
+	text-decoration: none;                            /* 移除默认下划线 */
+	border-bottom: 1px solid transparent;            /* 透明底边框，用于悬停效果 */
 }
+
+/* 卡片内链接悬停效果 */
 .link-card a:hover {
-	border-bottom-color: #FF6B47;
+	border-bottom-color: #FF6B47;                    /* 悬停时显示底边框 */
 }
 
-/* 文本内容样式 */
+/* ========================================
+ * 文本内容样式设计
+ * ======================================== */
+
+/* 文本内容基础样式 */
 .text-content {
-	line-height: 1.8;
+	line-height: 1.8;                                 /* 增加行高提高可读性 */
 }
+
+/* H3标题样式 - 主要章节标题 */
 .text-content h3 {
-	color: #FF6B47;
-	margin: 1.5em 0 0.8em 0;
+	color: #FF6B47;                                    /* 主题橙红色 */
+	margin: 1.5em 0 0.8em 0;                          /* 上下边距控制间距 */
 }
+
+/* H4标题样式 - 次级标题 */
 .text-content h4 {
-	color: #777;
-	margin: 1.2em 0 0.6em 0;
+	color: #777;                                      /* 深灰色，层次分明 */
+	margin: 1.2em 0 0.6em 0;                          /* 适中的上下边距 */
 }
+
+/* 列表样式 - 有序和无序列表 */
 .text-content ul, .text-content ol {
-	margin: 1em 0;
+	margin: 1em 0;                                    /* 列表上下边距 */
 }
+
+/* 引用块样式 - 突出显示重要信息 */
 .text-content blockquote {
-	background: #fff5f2;
-	border-left: 4px solid #FF6B47;
-	padding: 1em 1.5em;
-	margin: 1.5em 0;
-	font-style: italic;
+	background: #fff5f2;                              /* 淡橙色背景呼应主题 */
+	border-left: 4px solid #FF6B47;                  /* 左侧主题色装饰条 */
+	padding: 1em 1.5em;                               /* 内边距 */
+	margin: 1.5em 0;                                  /* 上下边距 */
+	font-style: italic;                              /* 斜体强调引用性质 */
 }
+
+/* 行内代码样式 - 文本中的代码片段 */
 .text-content code {
-	background: #f4f4f4;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-family: 'Source Code Pro', monospace;
-	font-size: 0.9em;
+	background: #f4f4f4;                              /* 浅灰色背景区分代码 */
+	padding: 0.2em 0.4em;                             /* 紧凑的内边距 */
+	border-radius: 3px;                              /* 小圆角 */
+	font-family: 'Source Code Pro', monospace;       /* 等宽字体确保代码对齐 */
+	font-size: 0.9em;                                /* 稍小的字体 */
 }
+
+/* 代码块样式 - 多行代码显示 */
 .text-content pre {
-	background: #f4f4f4;
-	padding: 1em;
-	border-radius: 5px;
-	overflow-x: auto;
-	margin: 1.5em 0;
+	background: #f4f4f4;                              /* 与行内代码一致的背景色 */
+	padding: 1em;                                     /* 充足的内边距 */
+	border-radius: 5px;                              /* 圆角设计 */
+	overflow-x: auto;                                /* 水平滚动处理长代码行 */
+	margin: 1.5em 0;                                  /* 上下边距 */
 }
+
+/* 代码块内的代码样式 - 重置行内代码样式 */
 .text-content pre code {
-	background: none;
-	padding: 0;
+	background: none;                                /* 移除背景色 */
+	padding: 0;                                      /* 移除内边距 */
 }
 
-/* 加载状态样式 */
+/* ========================================
+ * 加载状态样式
+ * ======================================== */
+
+/* 加载提示容器 - 在Markdown解析期间显示 */
 .loading {
-	text-align: center;
-	padding: 2em;
-	color: #888;
+	text-align: center;                               /* 居中对齐 */
+	padding: 2em;                                     /* 充足的内边距 */
+	color: #888;                                      /* 中等灰色文字 */
 }
 
-/* 修复双滚动条问题 */
+/* ========================================
+ * 滚动条优化和布局修复
+ * ======================================== */
+
+/* 防止水平滚动条出现 */
 body {
-	overflow-x: hidden;
-}
-#wrapper {
-	height: 100vh;
-	overflow-y: auto;
-}
-#main {
-	max-height: calc(100vh - 4em);
+	overflow-x: hidden;                               /* 隐藏水平滚动条 */
 }
 
-/* 表格样式 */
-.text-content table {
-	width: 100%;
-	border-collapse: collapse;
-	margin: 1.5em 0;
-	border: 1px solid #e4e4e4;
+/* 包装器高度和滚动控制 */
+#wrapper {
+	height: 100vh;                                   /* 全视口高度 */
+	overflow-y: auto;                                /* 允许垂直滚动 */
 }
+
+/* 主内容区域高度限制 */
+#main {
+	max-height: calc(100vh - 4em);                   /* 限制最大高度，预留空间给其他元素 */
+}
+
+/* ========================================
+ * 表格样式设计
+ * ======================================== */
+
+/* 表格基础样式 */
+.text-content table {
+	width: 100%;                                      /* 全宽显示 */
+	border-collapse: collapse;                       /* 合并边框 */
+	margin: 1.5em 0;                                 /* 上下边距 */
+	border: 1px solid #e4e4e4;                       /* 外边框 */
+}
+
+/* 表格单元格通用样式 */
 .text-content table th,
 .text-content table td {
-	padding: 0.8em 1em;
-	border: 1px solid #e4e4e4;
-	text-align: left;
-}
-.text-content table th {
-	background: #fff5f2;
-	font-weight: bold;
-	color: #FF6B47;
-}
-.text-content table tr:nth-child(even) {
-	background: #fafafa;
+	padding: 0.8em 1em;                              /* 单元格内边距 */
+	border: 1px solid #e4e4e4;                       /* 单元格边框 */
+	text-align: left;                               /* 左对齐 */
 }
 
-/* 响应式设计 */
+/* 表头样式 */
+.text-content table th {
+	background: #fff5f2;                             /* 淡橙色背景呼应主题 */
+	font-weight: bold;                               /* 加粗字体 */
+	color: #FF6B47;                                   /* 主题色文字 */
+}
+
+/* 斑马纹效果 - 提高表格可读性 */
+.text-content table tr:nth-child(even) {
+	background: #fafafa;                             /* 偶数行浅灰色背景 */
+}
+
+/* ========================================
+ * 响应式设计 - 移动端适配
+ * ======================================== */
+
+/* 小屏幕设备样式调整 (手机端) */
 @media screen and (max-width: 736px) {
+	/* 链接网格在小屏幕上改为单列布局 */
 	.link-grid {
-		grid-template-columns: 1fr;
+		grid-template-columns: 1fr;                     /* 单列布局节省空间 */
 	}
+	
+	/* 表格在小屏幕上的优化 */
 	.text-content table {
-		font-size: 0.9em;
+		font-size: 0.9em;                               /* 减小字体适应小屏幕 */
 	}
+	
+	/* 表格单元格紧凑布局 */
 	.text-content table th,
 	.text-content table td {
-		padding: 0.6em 0.8em;
+		padding: 0.6em 0.8em;                           /* 减少内边距节省空间 */
 	}
 }
