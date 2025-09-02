@@ -35,9 +35,11 @@
 
 > 教辅、学科知识问答，回答比较严谨
 
-#### [其他大语言模型](https://ai-bot.cn/favorites/ai-chatbots/)
+#### 大语言模型总结
 
-> 主要大模型：美国ChatGPT（Microsoft）、Gemini（Google）、Claude（Amazon&Google）+ Gork（X/Twitter）+开源Llama（Meta/Facebook）；中国 [DeepSeek（深度求索）](https://chat.deepseek.com/) 、[豆包（字节跳动）](https://www.doubao.com/chat/)、  [通义](https://www.tongyi.com/)/[千问（阿里）](https://chat.qwen.ai/) ，以及多个基于以上模型的  [超算中心](https://www.scnet.cn/ui/chatbot/)  [纳米](https://bot.n.cn/)  [小艺](https://xiaoyi.huawei.com/chat/)  [当贝](https://ai.dangbei.com/chat)   [QQ文档](https://docs.qq.com/ai)  [QQ浏览器](https://aisearch.qq.com/) 等。[清单：Awesome-LLMs-In-China](https://github.com/wgwang/awesome-LLMs-In-China)。  法国 [Le Chat](https://chat.mistral.ai/chat)。
+当前大语言模型较多：美国的主流的有ChatGPT（Microsoft）、Gemini（Google）、Claude（Amazon&Google）+ Gork（X/Twitter）+ 开源Llama（Meta/Facebook）。中国主流的主要有[DeepSeek（深度求索）](https://chat.deepseek.com/) 、[豆包（字节跳动）](https://www.doubao.com/chat/)、  [通义](https://www.tongyi.com/)/[千问（阿里）](https://chat.qwen.ai/) ，以及[腾讯混元](https://hunyuan.tencent.com/)、[文心一言](https://yiyan.baidu.com/)、[讯飞星火](https://xinghuo.xfyun.cn/)等，[清单：Awesome-LLMs-In-China](https://github.com/wgwang/awesome-LLMs-In-China)。 另外还有大量基于开放模型的[超算中心](https://www.scnet.cn/ui/chatbot/)  [360纳米](https://bot.n.cn/)  [QQ文档专线](https://docs.qq.com/ai)  [QQ浏览器专线](https://aisearch.qq.com/) 等。法国 [Le Chat](https://chat.mistral.ai/chat)。参考：[大语言模型导航](https://ai-bot.cn/favorites/ai-chatbots/)。
+
+> Gemini + doubao/kimi/deepseek基本满足使用需求
 
 ### network
 
