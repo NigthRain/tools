@@ -6,9 +6,9 @@
 
 > 收藏夹 -- > 导航网站，附注释与截图。[raindrop](https://app.raindrop.io/my/0)+github+[netlify](https://shoucangjia.netlify.app/)
 
-#### [139邮箱-AI工作台](https://appmail.mail.10086.cn/m7/index.html)
+#### [139邮箱AI工作台](https://appmail.mail.10086.cn/m7/index.html)
 
-> 中国移动139邮箱内置AI工作台，可使用deepseek和qwen大语言模型对话，可自建知识库（支持Word / Excel / PPT / TXT / PDF格式），最多创建100个知识库，适用于日常办公。
+> 139邮箱内置，deepseek+qwen，可自建100个知识库（支持Word / Excel / PPT / TXT / PDF格式）
 
 #### [腾讯IMA](https://ima.qq.com/)
 
@@ -31,9 +31,13 @@
 
 > 长文本问答，200万字上下文
 
+[学而思九章](https://playground.xes1v1.cn/MathGPT)
+
+> 教辅、学科知识
+
 #### [其他大语言模型](https://ai-bot.cn/favorites/ai-chatbots/)
 
-> chatgpt gork claude 豆包 通义千问 …… [Mistral.AI - Le Chat](https://chat.mistral.ai/chat)
+> chatgpt gork claude [Microsoft](https://copilot.cloud.microsoft/) [Copilot](https://m365.cloud.microsoft/search/?auth=2)  [豆包](https://www.doubao.com/chat/)  [通义](https://www.tongyi.com/) [千问](https://chat.qwen.ai/)  [纳米](https://bot.n.cn/)…… [Mistral.AI - Le Chat](https://chat.mistral.ai/chat)
 
 ### network
 
