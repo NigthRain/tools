@@ -32,21 +32,17 @@
 
 ### network
 
-#### [github](https://github.com/)
+#### git
 
-#### [cloudflare](https://dash.cloudflare.com/)
+[github](https://github.com/)  [gitee](https://gitee.com/3g/projects)
 
-#### [netlify](https://app.netlify.com/)
+#### pages
 
-#### [vercel](https://vercel.com/)
+[cloudflare](https://dash.cloudflare.com/)  [netlify](https://app.netlify.com/)  [vercel](https://vercel.com/) [edgeone](https://console.tencentcloud.com/edgeone/pages)
 
-[腾讯云 ](https://cloud.tencent.com/)
+#### vps
 
-[阿里云](https://cn.aliyun.com/)
-
-[京东云](https://console.jdcloud.com/)
-
-[火山云](https://www.volcengine.com/)
+[腾讯云 ](https://cloud.tencent.com/) [阿里云](https://cn.aliyun.com/) [京东云](https://console.jdcloud.com/) [火山云](https://www.volcengine.com/)
 
 
 
@@ -55,7 +51,11 @@
 
 [国家重大建设项目库](https://kpp.ndrc.gov.cn/account/signin)
 
+
+
 [预算管理一体化系统](http://119.36.213.20:28372/auth/loginUser.html)
+
+
 
 ## 常用软件
 
@@ -67,6 +67,6 @@
 
 ## 其他工具
 
-#### [我的工作流](https://bookmark.fanqiemiao.com/blog)
+#### [Workflow](https://bookmark.fanqiemiao.com/blog)
 
-我的日常工作流
+我的日常工作流，将重复性的、可预测的工作步骤标准化和自动化，从而提高效率、减少错误并加强团队协作。
