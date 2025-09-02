@@ -20,12 +20,12 @@
 
 #### [Google AI Studio](https://aistudio.google.com/prompts/new_chat)
 
-> Google AI Studio，可使用Gemini Pro，100万免费token。主要用于编写代码、深度思考等任务。
+> Google AI Studio，可使用Gemini Pro，100万免费token。主要用于编写代码、深度思考等任务
 
 
 #### [Google gemini](https://gemini.google.com/app?hl=zh-cn)
 
-> Google 大语言模型对话，推荐gemini flash 模型，速度较快。
+> Google 大语言模型对话，推荐gemini flash 模型，速度较快
 
 #### [kimi](https://www.kimi.com/)
 
@@ -33,11 +33,11 @@
 
 #### [学而思九章](https://playground.xes1v1.cn/MathGPT)
 
-> 教辅、学科知识
+> 教辅、学科知识问答，回答比较严谨
 
 #### [其他大语言模型](https://ai-bot.cn/favorites/ai-chatbots/)
 
-> 国内主要有[DeepSeek](https://chat.deepseek.com/) [豆包](https://www.doubao.com/chat/)  [通义](https://www.tongyi.com/)/[千问](https://chat.qwen.ai/) ，以及大量基于以上3个模型的  [超算中心](https://www.scnet.cn/ui/chatbot/)  [纳米](https://bot.n.cn/)  [小艺](https://xiaoyi.huawei.com/chat/) [当贝](https://ai.dangbei.com/chat)   [QQ文档](https://docs.qq.com/ai)  [QQ浏览器](https://aisearch.qq.com/) …… 
+> 主要大模型：美国ChatGPT（Microsoft）、Gemini（Google）、Claude（Amazon&Google）+ Gork（X/Twitter）+开源Llama（Meta/Facebook）；中国 [DeepSeek（深度求索）](https://chat.deepseek.com/) 、[豆包（字节跳动）](https://www.doubao.com/chat/)、  [通义](https://www.tongyi.com/)/[千问（阿里）](https://chat.qwen.ai/) ，以及多个基于以上模型的  [超算中心](https://www.scnet.cn/ui/chatbot/)  [纳米](https://bot.n.cn/)  [小艺](https://xiaoyi.huawei.com/chat/)  [当贝](https://ai.dangbei.com/chat)   [QQ文档](https://docs.qq.com/ai)  [QQ浏览器](https://aisearch.qq.com/) 等。[清单：Awesome-LLMs-In-China](https://github.com/wgwang/awesome-LLMs-In-China)。  法国 [Le Chat](https://chat.mistral.ai/chat)。
 
 ### network
 
