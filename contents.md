@@ -12,15 +12,15 @@
 
 #### [腾讯IMA](https://ima.qq.com/)
 
-> deepseek/hunyuan + 自建知识库 **微信生态** 适合短文本日常问答
+> Deepseek/Hunyuan + 自建知识库 **微信生态** 适合短文本日常问答
 
 #### [Google NotebookLM](https://notebooklm.google.com/)
 
-> google的ai笔记本，单个笔记本支持上传50个参考文件，适合长文本深度分析问答
+> Google的ai笔记本，单个笔记本支持上传50个参考文件，适合长文本深度分析问答
 
 #### [Google AI Studio](https://aistudio.google.com/prompts/new_chat)
 
-> Google AI Studio，可使用Gemini Pro，100万免费token。主要用于编写代码、深度思考等任务
+> Google AI Studio，可使用Gemini Pro，每天100万免费token。主要用于编写代码、深度思考等任务
 
 
 #### [Google gemini](https://gemini.google.com/app?hl=zh-cn)
@@ -49,11 +49,15 @@
 
 #### pages
 
-> [cloudflare](https://dash.cloudflare.com/)	 [netlify](https://app.netlify.com/) 	 [vercel](https://vercel.com/) 	[edgeone](https://console.tencentcloud.com/edgeone/pages)
+> [cloudflare worker](https://dash.cloudflare.com/)	 [netlify](https://app.netlify.com/) 	 [vercel](https://vercel.com/) 	[edgeone pages](https://console.tencentcloud.com/edgeone/pages)
 
 #### vps
 
-> [腾讯云 ](https://cloud.tencent.com/) 	[阿里云](https://cn.aliyun.com/) 	[京东云](https://console.jdcloud.com/) 	[火山云](https://www.volcengine.com/)
+> [腾讯云 ](https://cloud.tencent.com/) 	[阿里云](https://cn.aliyun.com/) 		[京东云](https://console.jdcloud.com/) 		[火山云](https://www.volcengine.com/)
+
+CDN
+
+[cloudflare](https://dash.cloudflare.com/)  	 [edgeone](https://console.tencentcloud.com/edgeone/zones)   	[jsdelivr](https://www.jsdelivr.com/)
 
 
 
