@@ -1,23 +1,13 @@
 /* 
  * ===================================================================
  *
- *      Typora 主题 - Screen LapisW Theme (最终优化与注释版)
- *
- * ===================================================================
- *
+ *       Typora 主题 - Screen LapisW Theme 
  *       Author: Google AI Studio & FQM
  *       修改自Typora主题 - Lapis（青金石） 原作者：YiNN 
- *      项目地址：https://github.com/YiNNx/typora-theme-lapis
- *
- *      版本：2.2.1 (H5 样式调整)
- *
- *      特性与优化摘要：
- *      - [调整] H5标题设置为居中对齐，并采用与H2相同的字体。
- *      - [专业排版] 精心调校的字体系统，支持段落间距、标题、代码、表格等多种场景。
- *      - [性能优先] 采用 @font-face 非阻塞式加载网络字体，优先使用本地字体，实现瞬时加载，杜绝闪烁。
- *      - [功能增强] 自动在代码块右上角显示语言名称，并解决了层叠顺序问题，视觉清晰。
+ *       原项目地址：https://github.com/YiNNx/typora-theme-lapis
+ *       版本：2.2.1 
+ * ===================================================================
  */
-
 /* 
  * ===================================================================
  *   1. 字体定义与加载优化 (@font-face)
@@ -213,7 +203,7 @@ mark {
 
 #write h4 {
     font-size: 1.3rem;
-    font-family: "文津宋体", "SYPX-ZhenSong", serif;
+    font-family: "文津宋体 第0平面", "文津宋体", "SYPX-ZhenSong", serif;
     color: #002FA7;
     font-weight: bold;
 }
@@ -223,6 +213,7 @@ mark {
     font-size: 1.2rem;
     text-align: center; /* 居中对齐 */
     font-family: "等距更纱黑体 Slab SC", "MiSans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif; /* 与 H2 字体相同 */
+     color: #4870AC; /* [新增] 将颜色设置为与 H1 相同 */
 }
 
 #write h6 {
