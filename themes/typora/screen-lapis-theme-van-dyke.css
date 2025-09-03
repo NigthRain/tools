@@ -1,0 +1,508 @@
+/* 
+ * ===================================================================
+ *
+ *      Typora 主题 - Screen Van Dyke Brown Theme
+ *
+ * ===================================================================
+ *
+ *       Author: FQM / Google AI Studio Agent
+ *       修改自 Typora 主题 - Sscreen-lapis-theme
+ *       原作者: Google AI Studio & FQM / YiNN (Lapis)
+ *       最初项目地址：https://github.com/YiNNx/typora-theme-lapis
+ *      版本：1.3.0
+ *      特性与优化摘要：
+ *      - [新色系] 以凡戴克棕 (Van Dyke Brown) 为主色调，营造温暖、沉稳、专业的写作氛围。
+ *      - [样式调整] 为超链接增加了带背景色的悬停效果，视觉反馈清晰。
+ *      - [样式调整] 统一了链接悬停背景与行内代码背景色，并优化了文字颜色以保证对比度。
+ *      - [布局调整] 减小了段落之间的默认间距，使文本更加紧凑。
+ *      - [性能优先] 采用 @font-face 非阻塞式加载网络字体，优先使用本地字体。
+ */
+
+/* 
+ * ===================================================================
+ *   1. 字体定义与加载优化 (@font-face)
+ * ===================================================================
+ */
+
+/* 1.1. 思源屏显臻宋 (SYPX-ZhenSong) */
+@font-face {
+  font-family: 'SYPX-ZhenSong';
+  src: local('思源屏显臻宋'), local('SYPX ZhenSong'), local('Source Han Display SC VF'),
+       url('https://cdn.jsdelivr.net/gh/Yin-s/typora-theme-lapis@main/lapis/font/SYPX-ZhenSong.woff2') format('woff2');
+  font-display: swap;
+}
+
+/* 1.2. 抖音美好体 (DouyinSansBold) */
+@font-face {
+  font-family: 'DouyinSansBold';
+  src: local('抖音美好体'), local('Douyin Sans Bold'),
+       url('https://chinese-font.netlify.app/fonts/dymh/DouyinSansBold.woff2') format('woff2');
+  font-display: swap;
+}
+
+/* 1.3. 霞鹜文楷屏幕阅读版 (LXGWWenKaiMonoScreen) */
+@font-face {
+  font-family: 'LXGWWenKaiMonoScreen';
+  src: local('霞鹜文楷 GB 屏幕阅读版'), local('霞鹜文楷 屏幕阅读版'), local('LXGW WenKai Mono Screen'),
+       url('https://cdn.jsdelivr.net/gh/Yin-s/typora-theme-lapis@main/lapis/font/LXGWWenKaiMonoScreen-Regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+
+/* 
+ * ===================================================================
+ *   2. CSS 变量定义 (:root) - Van Dyke Brown Palette
+ * ===================================================================
+ */
+:root {
+    /* 基础颜色配置 */
+    --text-color: #3d352f;
+    --primary-color: #432913;
+    --bg-color: #fcfaf6;
+    --side-bar-bg-color: var(--bg-color);
+
+    /* 功能性颜色 */
+    --marker-color: #a18a77;
+    --source-color: #998a7d;
+    --highlight-color: #fff1a8;
+    --header-span-color: var(--primary-color);
+    --block-bg-color: #f5f2ef;
+    --img-shadow-color: #dcd3ca;
+
+    /* Alert颜色变量 (Earthy Tones) */
+    --alert-important-color: #8c3b3b; /* Deep Dusty Red */
+    --alert-note-color: #5a7b8c;      /* Muted Slate Blue */
+    --alert-tip-color: #5e8d63;        /* Earthy Moss Green */
+    --alert-warning-color: #b58423;    /* Rich Ochre */
+    --alert-caution-color: #c95b32;    /* Burnt Orange */
+
+    /* Typora内置UI颜色覆盖 */
+    --search-hit-bg-color: var(--select-text-bg-color);
+    --search-select-bg-color: #e8b759;
+    --control-text-hover-color: #a18a77;
+    --rawblock-edit-panel-bd: var(--block-bg-color);
+    --item-hover-bg-color: #f3f0ec;
+    --active-file-bg-color: var(--block-bg-color);
+}
+
+/* 
+ * ===================================================================
+ *   3. 打印样式 (@media print)
+ * ===================================================================
+ */
+@media print {
+    :root {
+        --text-color: rgb(0, 0, 0);
+    }
+    .typora-export {
+        margin: 2mm 6mm 0 6mm;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: transparent !important;
+    }
+}
+
+/* 
+ * ===================================================================
+ *   4. 基础样式 (Base Styles)
+ * ===================================================================
+ */
+#write {
+    max-width: 1200px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    line-height: 1.7em;
+    word-spacing: 0px;
+    letter-spacing: 0px;
+    word-break: break-word;
+    word-wrap: break-word;
+    text-align: justify;
+    font-family: "Times New Roman", "文津宋体 第0平面", "文津宋体", "SYPX-ZhenSong", serif;
+    margin-bottom: 5rem;
+    padding-bottom: 2rem;
+}
+
+/* 
+ * ===================================================================
+ *   5. 文本元素样式 (Text Elements)
+ * ===================================================================
+ */
+#write strong { color: var(--primary-color); }
+#write a { color: var(--primary-color); transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
+
+/* [核心更改] 为超链接添加带背景的悬停效果 */
+#write a:hover {
+    color: #fcfaf6; /* 浅色文字以保证对比度 */
+    background-color: #8D7477;
+    text-decoration: none; /* 悬停时移除下划线，避免与背景冲突 */
+    padding: 1px 4px;
+    border-radius: 3px;
+    margin: 0 -1px; /* 补偿padding带来的位移 */
+}
+
+#write .md-p a,
+#write .md-heading a,
+[md-inline=url],
+[md-inline=link]>.md-content {
+    word-wrap: break-word;
+    text-decoration: underline solid;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+#write h2.md-heading a {
+    text-decoration: underline;
+    border-bottom: 0;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.2px;
+}
+.md-meta,
+[md-inline=link]>.md-content,
+[md-inline=image]>.md-meta,
+.md-image>.md-meta {
+    word-break: break-all;
+    font-weight: normal;
+    color: var(--source-color);
+    font-size: 90%;
+}
+mark {
+    background: var(--highlight-color);
+    padding: 1px .15rem;
+    border-radius: 1px;
+    color: inherit;
+}
+
+/* 
+ * ===================================================================
+ *   6. 段落与标题 (Paragraphs & Headings)
+ * ===================================================================
+ */
+
+#write p {
+    margin-top: 0;
+    margin-bottom: 0.15em;
+}
+
+#write blockquote p {
+    margin-bottom: 0;
+}
+
+
+#write :is(h1, h2, h3, h4, h5, h6) {
+    padding: 0;
+    color: var(--primary-color);
+}
+
+#write :is(h5, h6) {
+    font-weight: normal;
+}
+
+#write h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-family: "抖音美好体", "DouyinSansBold", sans-serif;
+    color: var(--primary-color);
+}
+
+#write h2 {
+    padding: 0.3em;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 1.4rem;
+    font-family: "等距更纱黑体 Slab SC", "MiSans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    background-color: #8D7477;
+}
+#write h2, #write h2 a, #write h2 code, #write h2 strong, #write h2 script { color: var(--bg-color); }
+#write h2 a { border-bottom-color: var(--bg-color) !important; }
+
+#write h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: "霞鹜文楷 GB 屏幕阅读版", "霞鹜文楷 屏幕阅读版", "LXGWWenKaiMonoScreen", sans-serif;
+    color: #5a381a; /* Darker, complementary brown */
+}
+
+#write h4 {
+    font-size: 1.3rem;
+    font-family: "文津宋体 第0平面", "SYPX-ZhenSong", serif;
+    color: #7b5b41; /* Mid-tone, complementary brown */
+    font-weight: bold;
+}
+
+#write h5 {
+    font-size: 1.2rem;
+    text-align: center;
+    font-family: "等距更纱黑体 Slab SC", "MiSans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    color: var(--primary-color);
+}
+
+#write h6 {
+    font-size: 1.2rem;
+    font-family: "Times New Roman", "文津宋体 第0平面", "文津宋体", "SYPX-ZhenSong", serif;
+}
+
+#write h1 { padding-top: 1.5rem; margin-bottom: 1.5rem; }
+#write h2, #write h3, #write h4, #write h5, #write h6 {
+    margin: 0.25em 0.25em;
+}
+
+/* 
+ * ===================================================================
+ *   7. 列表样式 (List Styles)
+ * ===================================================================
+ */
+::marker { font-weight: bold; color: var(--marker-color); }
+li.md-list-item { margin: 0.25rem 0; }
+#write ul, #write ol { margin: 1em 0; padding-left: 2.5em; }
+#write ul { list-style-type: disc; }
+#write ul ul { list-style-type: square; }
+#write ol { list-style-type: decimal; }
+#write li > p { margin-bottom: 0.25em; }
+#write li section { margin: 0; line-height: 1.7rem; font-weight: 500; }
+
+/* 
+ * ===================================================================
+ *   8. 引用块与提示框 (Blockquote & Alerts)
+ * ===================================================================
+ */
+#write blockquote, .md-alert {
+    display: block;
+    font-size: .9em;
+    overflow: auto;
+    border-left: 3px solid var(--primary-color);
+    padding: 10px 30px 10px 15px;
+    margin: 1.25em 0;
+    background: var(--block-bg-color);
+}
+.md-alert-text-container { font-size: 1.2em; }
+
+.md-alert-text-important { color: var(--alert-important-color); }
+.md-alert.md-alert-important { background-color: color-mix(in srgb, var(--alert-important-color) 10%, transparent); border-left-color: var(--alert-important-color); }
+.md-alert-text-note { color: var(--alert-note-color); }
+.md-alert.md-alert-note { background-color: color-mix(in srgb, var(--alert-note-color) 10%, transparent); border-left-color: var(--alert-note-color); }
+.md-alert-text-tip { color: var(--alert-tip-color); }
+.md-alert.md-alert-tip { background-color: color-mix(in srgb, var(--alert-tip-color) 10%, transparent); border-left-color: var(--alert-tip-color); }
+.md-alert-text-warning { color: var(--alert-warning-color); }
+.md-alert.md-alert-warning { background-color: color-mix(in srgb, var(--alert-warning-color) 10%, transparent); border-left-color: var(--alert-warning-color); }
+.md-alert-text-caution { color: var(--alert-caution-color); }
+.md-alert.md-alert-caution { background-color: color-mix(in srgb, var(--alert-caution-color) 10%, transparent); border-left-color: var(--alert-caution-color); }
+
+/* 
+ * ===================================================================
+ *   9. 代码、图片、表格等 (Code, Images, Tables)
+ * ===================================================================
+ */
+ /* [核心更改] 调整行内代码背景色与文字颜色 */
+#write code {
+    color: #F6F2F1;
+    font-family: "Sarasa Term Slab SC", "LXGWWenKaiMonoScreen", monospace;
+    font-size: 95%;
+    font-weight: normal;
+    word-wrap: break-word;
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin: 0 2px;
+    background-color: #8D7477;
+    word-break: break-all;
+}
+
+#write img { 
+    margin: 0 auto; 
+    max-width: 100%; 
+}
+
+#write p > .md-image:only-child:not(.md-img-error) img,
+#write p > img:only-child {
+    filter: drop-shadow(var(--img-shadow-color) 0px 6px 6px);
+    display: block;
+    margin: 1.5em auto;
+    padding: 1rem;
+}
+
+#write table {
+    display: table;
+    text-align: justify;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    margin: 1.5em 0;
+}
+#write table tr { border-top: 1px solid #ccc; }
+#write table tr th, #write table tr td {
+    font-size: 1.1rem;
+    font-family: "霞鹜文楷 GB 屏幕阅读版", "霞鹜文楷 屏幕阅读版", "LXGWWenKaiMonoScreen", sans-serif;
+    border: 1px solid #dcd3ca;
+    padding: 5px 10px;
+    text-align: justify;
+}
+#write table tr th { font-weight: bold; color: var(--primary-color); text-align: center; }
+#write table tr td:hover, #write table tr th:hover { background-color: var(--block-bg-color); }
+
+/* 
+ * ===================================================================
+ *   10. 特殊块级元素 (Special Blocks)
+ * ===================================================================
+ */
+sup.md-footnote { background-color: var(--block-bg-color); color: var(--primary-color); }
+.md-def-name { color: var(--primary-color); }
+
+.md-inline-math, .md-block-math {
+    font-size: 1.2rem;
+    font-family: "Cantarell", "文津宋体 第0平面", "SYPX-ZhenSong", serif;
+}
+.md-inline-math script { color: var(--primary-color); }
+
+hr { margin: 2em 0; border: 0; border-top: 2px solid #e9e4de; border-radius: 2px; }
+
+.task-list-item input::before {
+    content: ""; display: inline-block; width: 1.0125rem; height: 1.0125rem;
+    vertical-align: middle; text-align: center; border: 1px solid var(--marker-color);
+    border-radius: 1.2rem; background-color: #fdfdfd;
+    margin: -.6rem 0.1rem 0 -0.1rem;
+}
+.task-list-item input:checked::before {
+    content: '✓'; font-weight: bold; -webkit-text-stroke: 1px var(--primary-color);
+    color: var(--primary-color); background-color: var(--bg-color);
+    font-size: 0.75rem; line-height: 0.8rem;
+}
+
+/* 
+ * ===================================================================
+ *   11. 侧边栏样式 (Sidebar Styles)
+ * ===================================================================
+ */
+#typora-sidebar {
+    font-family: 'Cantarell', 'SourceHanSerifCN', "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    height: 100%; color: var(--text-color); font-size: 0.92rem; background-color: var(--bg-color);
+}
+.active-tab-files #info-panel-tab-file .info-panel-tab-border,
+.active-tab-outline #info-panel-tab-outline .info-panel-tab-border,
+.ty-show-search #info-panel-tab-search .info-panel-tab-border {
+    border-radius: 10px; height: 1px; background-color: var(--primary-color);
+}
+.file-node-content { color: var(--primary-color); line-height: 1.6rem; }
+span.file-node-title-name-part, span.file-node-title-ext-part { color: var(--text-color); }
+.file-tree-node.active>.file-node-background { border-left: 4px solid var(--primary-color); }
+#outline-content { height: 100%; overflow-x: hidden; line-height: 1.6rem; font-size: .96rem; }
+#outline-content .outline-active { color: var(--primary-color); }
+
+/* 
+ * ===================================================================
+ *   12. 代码块样式 (Code Fences)
+ * ===================================================================
+ */
+.md-fences { position: relative; margin: 1.25rem 0; transition: all .2s ease-in-out; }
+.md-fences:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(135, 120, 110, 0.4); }
+
+.cm-s-inner.CodeMirror {
+    padding: 0.8rem 1.5rem 0.8rem;
+    color: #4f4640;
+    font-family: "Sarasa Term Slab SC", "LXGWWenKaiMonoScreen", monospace;
+    font-size: 1rem;
+    border-radius: 10px;
+    background-color: var(--block-bg-color);
+    line-height: 1.6rem;
+}
+.CodeMirror-gutters { border-right: 1px solid #dcd3ca; background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0 3px 0 5px; text-align: right; color: var(--primary-color); }
+.CodeMirror div.CodeMirror-cursor { border-left: 1px solid var(--primary-color); }
+.cm-s-inner div.CodeMirror-selected, .cm-s-inner.CodeMirror-focused div.CodeMirror-selected { background: rgba(161, 138, 119, 0.2) !important; }
+
+/* 
+ * ===================================================================
+ *   13. 代码块语法高亮颜色方案 (Code Highlighting - Warm Palette)
+ * ===================================================================
+ */
+.cm-s-inner .cm-keyword   { color: #008080 !important; } /* Teal */
+.cm-s-inner .cm-operator  { color: #2a6c9d !important; } /* Dark Muted Blue */
+.cm-s-inner .cm-variable  { color: #a33a8a !important; } /* Plum */
+.cm-s-inner .cm-variable-2{ color: #43644f !important; } /* Dark Moss Green */
+.cm-s-inner .cm-variable-3, .cm-s-inner .cm-type { color: #8e6e53 !important; } /* Muted Brown */
+.cm-s-inner .cm-number    { color: #885a2c !important; } /* Solid Brown */
+.cm-s-inner .cm-def       { color: #432913 !important; } /* Primary Brown */
+.cm-s-inner .cm-string    { color: #3a7943 !important; } /* Forest Green */
+.cm-s-inner .cm-string-2  { color: #51717c !important; } /* Bluish Gray */
+.cm-s-inner .cm-comment   { color: #998a7d !important; } /* Muted Gray-Brown */
+.cm-s-inner .cm-meta      { color: #c26a35 !important; } /* Muted Orange */
+.cm-s-inner .cm-attribute { color: #865ba0 !important; } /* Muted Purple */
+.cm-s-inner .cm-error     { background-color: #8c3b3b40 !important; color: white !important; }
+
+/* 
+ * ===================================================================
+ *   14. 滚动条样式 (Scrollbar)
+ * ===================================================================
+ */
+::-webkit-scrollbar { width: 1rem; }
+::-webkit-scrollbar-track { border-radius: 10px; }
+::-webkit-scrollbar-thumb { border-radius: 10px; background: rgba(161, 138, 119, 0.45); }
+#outline-content::-webkit-scrollbar, #file-library::-webkit-scrollbar { width: .5rem; }
+
+/* 
+ * ===================================================================
+ *   15. 元数据块 (YAML Front Matter)
+ * ===================================================================
+ */
+pre.md-meta-block {
+    font-family: "Sarasa Term Slab SC", "LXGWWenKaiMonoScreen", monospace;
+    color: var(--primary-color);
+    background: #f3f0ec;
+    padding: 1.5rem;
+    margin: -37px 0rem 3.8rem;
+    filter: drop-shadow(var(--img-shadow-color) 0px 3px 3px);
+}
+
+/* 
+ * ===================================================================
+ *   16. 代码块增强样式 (Code Fences Enhancement)
+ * ===================================================================
+ */
+.md-fences:before {
+    content: ' ';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='54' height='14' viewBox='0 0 54 14'%3E%3Cg fill='none' fill-rule='evenodd' transform='translate(1 1)'%3E%3Ccircle cx='6' cy='6' r='6' fill='%23FF5F56' stroke='%23E0443E' stroke-width='.5'%3E%3C/circle%3E%3Ccircle cx='26' cy='6' r='6' fill='%23FFBD2E' stroke='%23DEA123' stroke-width='.5'%3E%3C/circle%3E%3Ccircle cx='46' cy='6' r='6' fill='%2327C93F' stroke='%231AAB29' stroke-width='.5'%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 15px 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.md-fences[lang]:after {
+    content: attr(lang);
+    position: absolute;
+    top: .5rem;
+    right: .7rem;
+    z-index: 10;
+    padding: .1rem .5rem;
+    border-radius: 3px;
+    color: var(--primary-color);
+    background-color: rgba(252, 250, 246, 0.85);
+    backdrop-filter: blur(2px);
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: auto !important; }
+
+/* 
+ * ===================================================================
+ *   17. 代码块编辑器体验优化
+ * ===================================================================
+ */
+.cm-s-inner .CodeMirror-matchingbracket { text-decoration: underline; color: #432913 !important; background-color: rgba(161, 138, 119, 0.2); }
+
+/* 
+ * ===================================================================
+ *   18. Typora UI 样式
+ * ===================================================================
+ */
+.megamenu-menu-header { border: none; color: var(--text-color); }
+.megamenu-menu-header #megamenu-back-btn,
+.megamenu-menu-header .megamenu-menu-header-title-back,
+.megamenu-menu-header .megamenu-menu-header-title-menu { color: var(--text-color); }
+.megamenu-menu { background-color: var(--bg-color); color: var(--text-color); box-shadow: none !important; }
+header, #megamenu-content { background-color: var(--bg-color); background-image: none !important; }
+.md-search-hit { background-color: var(--search-hit-bg-color); }
+#recent-file-panel tbody tr:nth-child(2n-1) { background-color: var(--item-hover-bg-color); }
+.export-detail, .export-item.active, .export-items-list-control { width: 75%; }
