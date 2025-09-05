@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健身锻炼</title>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            transition: background-color 1s ease-in-out;
+        }
+
+        body.exercising {
+            background-color: #ffe0b2;
+        }
+
+        body.resting {
+            background-color: #b9f6ca;
+        }
+
+        .transition-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            color: #d2b48c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            font-weight: bold;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background-color: transparent;
+        }
+
+        .left-sidebar {
+            width: 300px;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            border-right: 1px solid #eee;
+            padding: 15px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .timer-container {
+            text-align: left;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .timer {
+            font-size: 4em;
+            font-weight: bold;
+            transition: color 0.5s;
+        }
+
+        .playlist-title {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .playlist {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .playlist li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        .playlist li:hover {
+            background-color: #f5f5f5;
+        }
+
+        .playlist li.active {
+            font-weight: bold;
+            color: #007BFF;
+            background-color: #e0f0ff;
+        }
+
+        .right-content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .top-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 20px 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .current-exercise-title {
+            font-size: 4em;
+            color: #d2b48c;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="transition-page" id="transitionPage"></div>
+
+    <div class="main-container" id="mainContainer">
+        <div class="left-sidebar">
+            <div class="timer-container">
+                <div class="timer" id="countdown">01:00</div>
+            </div>
+            <h3 class="playlist-title">播放列表</h3>
+            <ul class="playlist" id="playlist"></ul>
+        </div>
+
+        <div class="right-content-area">
+            <div class="top-info">
+                <div class="current-exercise-title" id="currentExercise"></div>
+            </div>
+            <div class="video-wrapper">
+                <video id="exerciseVideo" controls muted playsinline></video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const bodyElement = document.body;
+        const countdownElement = document.getElementById('countdown');
+        const currentExerciseElement = document.getElementById('currentExercise');
+        const exerciseVideo = document.getElementById('exerciseVideo');
+        const playlistElement = document.getElementById('playlist');
+        const transitionPage = document.getElementById('transitionPage');
+        const mainContainer = document.getElementById('mainContainer');
+        const speechSynthesizer = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance();
+
+        const totalSeconds = 60;
+        const restDuration = 15;
+        let countdownEndTime;
+        let timerInterval;
+
+        const videoList = [
+            { name: "热身运动", file: "video/1.热身运动.mp4" },
+            { name: "跳跃运动", file: "video/2.跳跃运动.mp4" },
+            { name: "深蹲", file: "video/3.深蹲.mp4" },
+            { name: "俯卧撑", file: "video/4.俯卧撑.mp4" },
+            { name: "平板支撑", file: "video/5.平板支撑.mp4" },
+            { name: "拉伸", file: "video/6.拉伸.mp4" }
+        ];
+        let currentVideoIndex = 0;
+        const numberToChinese = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六"];
+        
+        // 异步获取并设置一个更自然的声音
+        function setVoice() {
+            const voices = speechSynthesizer.getVoices();
+            let chosenVoice = voices.find(voice => voice.lang === 'zh-CN' && voice.localService);
+            
+            if (!chosenVoice) {
+                chosenVoice = voices.find(voice => voice.name.includes('普通话') && voice.name.includes('zh-CN') && voice.gender === 'female');
+            }
+
+            if (chosenVoice) {
+                utterance.voice = chosenVoice;
+            } else {
+                utterance.lang = 'zh-CN';
+            }
+            utterance.rate = 0.9;
+        }
+
+        speechSynthesizer.onvoiceschanged = setVoice;
+        setVoice();
+
+        function speakText(text) {
+            speechSynthesizer.cancel();
+            utterance.text = text;
+            speechSynthesizer.speak(utterance);
+        }
+
+        function updateTimerDisplay() {
+            const now = Date.now();
+            const timeLeft = countdownEndTime - now;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                playNext();
+                return;
+            }
+
+            const totalSecondsLeft = Math.floor(timeLeft / 1000);
+            const minutes = Math.floor(totalSecondsLeft / 60);
+            const seconds = totalSecondsLeft % 60;
+            
+            countdownElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (totalSecondsLeft > restDuration) {
+                countdownElement.style.color = '#ff8c00';
+                bodyElement.classList.remove('resting');
+                bodyElement.classList.add('exercising');
+            } else {
+                countdownElement.style.color = '#32cd32';
+                bodyElement.classList.remove('exercising');
+                bodyElement.classList.add('resting');
+            }
+        }
+
+        function startTimer(durationInSeconds) {
+            clearInterval(timerInterval);
+            countdownEndTime = Date.now() + durationInSeconds * 1000;
+            updateTimerDisplay();
+            timerInterval = setInterval(updateTimerDisplay, 1000); // 更改为每1秒更新一次
+        }
+
+        function loadVideo(index) {
+            if (index >= videoList.length) {
+                mainContainer.style.display = 'none';
+                transitionPage.style.display = 'flex';
+                transitionPage.textContent = "所有锻炼已完成！恭喜你！";
+                bodyElement.classList.remove('exercising', 'resting');
+                speakText("所有锻炼已完成！恭喜你！");
+                return;
+            }
+
+            const video = videoList[index];
+            const chineseNumber = numberToChinese[index + 1] || (index + 1).toString();
+            const exerciseTitle = `第${chineseNumber}节 ${video.name}`;
+            
+            transitionPage.style.display = 'flex';
+            transitionPage.textContent = exerciseTitle;
+            speakText(exerciseTitle);
+            
+            setTimeout(() => {
+                transitionPage.style.display = 'none';
+                
+                currentVideoIndex = index;
+                currentExerciseElement.textContent = exerciseTitle;
+                
+                exerciseVideo.src = video.file;
+                exerciseVideo.load();
+                exerciseVideo.play().catch(error => {
+                    console.error("视频播放失败，可能由于浏览器自动播放策略限制：", error);
+                    document.body.onclick = () => {
+                        exerciseVideo.play();
+                        startTimer(totalSeconds);
+                        document.body.onclick = null;
+                    };
+                });
+                
+                const listItems = playlistElement.getElementsByTagName('li');
+                for (let i = 0; i < listItems.length; i++) {
+                    listItems[i].classList.remove('active');
+                }
+                if (listItems[index]) {
+                    listItems[index].classList.add('active');
+                }
+
+                exerciseVideo.onplay = () => {
+                    startTimer(totalSeconds);
+                };
+            }, 2000);
+        }
+
+        function playNext() {
+            loadVideo(currentVideoIndex + 1);
+        }
+        
+        function generatePlaylist() {
+            playlistElement.innerHTML = '';
+            videoList.forEach((video, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${index + 1}. ${video.name}`;
+                li.onclick = () => loadVideo(index);
+                playlistElement.appendChild(li);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            generatePlaylist();
+            loadVideo(0);
+        });
+    </script>
+</body>
+</html>
